@@ -28,8 +28,7 @@ namespace ETicaretServer.API.Controllers
             //     new() {Id = Guid.NewGuid(), Name = "Product2", Price = 54, CreatedDate = DateTime.UtcNow, Stock = 20},
             //      new() {Id = Guid.NewGuid(), Name = "Product3", Price = 340, CreatedDate = DateTime.UtcNow, Stock = 24}
             //});
-            Product p = await _productReadRepository.GetByIdAsync("6e25ca65-46e9-4bd1-8218-d8c6b60d386b", false);
-            p.Name = "Tracking test 2";
+            await _productWriteRepository.AddAsync(new() { Name = "C Product", Price = 1.500F, Stock = 10, CreatedDate = DateTime.UtcNow });
             await _productWriteRepository.SaveAsync();
         }
 
