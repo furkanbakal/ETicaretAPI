@@ -8,19 +8,19 @@ namespace ETicaretServer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductsController : ControllerBase
     {
         readonly private IProductReadRepository _productReadRepository;
         readonly private IProductWriteRepository _productWriteRepository;
 
-        public ProductController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository)
+        public ProductsController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository)
         {
             _productWriteRepository = productWriteRepository;
             _productReadRepository = productReadRepository;
         }
 
         [HttpGet]
-        public async Task Get()
+        public async Task<IActionResult> Get()
         {
             //await _productWriteRepository.AddRangeAsync(new()
             //{
@@ -28,8 +28,7 @@ namespace ETicaretServer.API.Controllers
             //     new() {Id = Guid.NewGuid(), Name = "Product2", Price = 54, CreatedDate = DateTime.UtcNow, Stock = 20},
             //      new() {Id = Guid.NewGuid(), Name = "Product3", Price = 340, CreatedDate = DateTime.UtcNow, Stock = 24}
             //});
-            await _productWriteRepository.AddAsync(new() { Name = "C Product", Price = 1.500F, Stock = 10, CreatedDate = DateTime.UtcNow });
-            await _productWriteRepository.SaveAsync();
+            return Ok("Merhaba");
         }
 
         [HttpGet("{id}")]
